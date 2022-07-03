@@ -1,0 +1,46 @@
+{
+    "discord.enabled": false,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "editor.guides.bracketPairs": true,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+            "source.organizeImports": true,
+            "source.sortMembers": false
+        },
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+    "dart.useLsp": true,
+    "dart.analysisExcludedFolders": [
+        "build",
+        "ios",
+        ".idea",
+        ".dart_tool",
+        ".slidy",
+        "android",
+        ".fvm",
+        "gem"
+    ],
+    "dart.flutterSdkPath": ".fvm/flutter_sdk",
+    // Remove .fvm files from search
+    "search.exclude": {
+        "**/.fvm": true,
+        "**/.dart_tool": true,
+        "**/build": true
+    },
+    // Remove from file watching
+    "files.watcherExclude": {
+        "**/.fvm": true,
+        "**/.dart_tool": true,
+        "**/build": true
+    },
+}

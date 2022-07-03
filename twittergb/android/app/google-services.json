@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "74581911787",
+    "project_id": "twittergb-aca55",
+    "storage_bucket": "twittergb-aca55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74581911787:android:54658deaef5f6455d976ae",
+        "android_client_info": {
+          "package_name": "com.wendellrocha.twittergb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "74581911787-rrfhtl8mjpe0dctu00f8kjs8v5pack89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2__2GQ7k9VFijajlkTVPMqDNEMRgJJPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "74581911787-rrfhtl8mjpe0dctu00f8kjs8v5pack89.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

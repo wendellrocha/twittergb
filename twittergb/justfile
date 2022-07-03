@@ -1,6 +1,6 @@
 set shell := ["pwsh.exe", "-c"]
 
-all: lint format run_dev_qa
+all: lint format run
 
 ## Roda o dart format no projeto
 format:
@@ -45,37 +45,17 @@ lint:
 	@cd ../modules && fvm dart analyze . || (echo "▓▓ Lint error ▓▓"; exit 1)
 	@cd ../twittergb && fvm dart analyze . || (echo "▓▓ Lint error ▓▓"; exit 1)
 
-## Roda o app em debug apontando para QA
-run_dev_qa: lint format
+## Roda o app em debug
+run: lint format
 	@echo "╠ Running the app"
-	@fvm flutter run --dart-define=isQA=true
+	@fvm flutter run
 
-## Roda o app em debug apontando para produção
-run_dev_prod: lint format
-	@echo "╠ Running the app"
-	@fvm flutter run --dart-define=isQA=false
-
-## Roda o app em release mode apontando para homologação
-run_release_qa: clean get lint format
-	@echo "╠ Running the app"
-	@fvm flutter run --release --dart-define=isQA=true
-
-## Gera o appbundle do app aprontando para QA
-build_qa: clean get lint format
+## Gera o appbundle do app
+build_bundle: clean get lint format
 	@echo "╠ Building the app"
-	@fvm flutter build appbundle --dart-define=isQA=true
+	@fvm flutter build appbundle
 
-## Gera o appbundle do app aprontando para produção
-build_prod: clean get lint format
+## Gera os APKs do app
+build_apk: clean get lint format
 	@echo "╠ Building the app"
-	@fvm flutter build appbundle --dart-define=isQA=false
-
-## Gera os APKs do app aprontando para QA
-build_qa_apk: clean get lint format
-	@echo "╠ Building the app"
-	@fvm flutter build apk --split-per-abi --dart-define=isQA=true
-
-## Gera os APKs do app aprontando para produção
-build_prod_apk: clean run_unit lint format
-	@echo "╠ Building the app"
-	@fvm flutter build apk --split-per-abi --dart-define=isQA=false
+	@fvm flutter build apk --split-per-abi

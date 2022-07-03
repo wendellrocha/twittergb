@@ -1,7 +1,27 @@
+import 'package:common/common.dart';
+import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import 'app/app_module.dart';
 import 'app/app_widget.dart';
+import 'firebase_options.dart';
 
-void main() => runApp(ModularApp(module: AppModule(), child: const AppWidget()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final prefs = await SharedPreferences.getInstance();
+  final themeController = ThemeController(prefs);
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(
+    ModularApp(
+      module: AppModule(),
+      child: AppWidget(
+        themeController: themeController,
+      ),
+    ),
+  );
+}

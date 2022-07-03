@@ -13,6 +13,7 @@ analyzer:
 
 linter:
   rules:
-    - prefer_const_constructors
-    - prefer_relative_imports
-    - prefer_single_quotes
+    prefer_const_constructors: true
+    prefer_relative_imports: true
+    prefer_single_quotes: true
+    depend_on_referenced_packages: false

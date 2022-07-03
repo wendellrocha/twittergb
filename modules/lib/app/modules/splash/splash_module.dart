@@ -6,7 +6,7 @@ import 'splash_store.dart';
 class SplashModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => SplashStore()),
+    TripleBind.lazySingleton((i) => SplashStore()),
   ];
 
   @override

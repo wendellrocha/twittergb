@@ -1,12 +1,14 @@
 import 'package:dependencies/dependencies.dart';
 
+import 'home_controller.dart';
 import 'home_page.dart';
 import 'home_store.dart';
 
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => HomeStore()),
+    TripleBind.lazySingleton((i) => HomeStore()),
+    Bind.lazySingleton((i) => HomeController()),
   ];
 
   @override
