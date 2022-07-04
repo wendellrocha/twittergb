@@ -6,6 +6,12 @@ class AppModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => UserStore()),
+    Bind.lazySingleton<FirebaseAuth>((i) => FirebaseAuth.instance),
+    Bind.lazySingleton<FirebaseStorage>((i) => FirebaseStorage.instance),
+    Bind.lazySingleton<FirebaseFirestore>((i) => FirebaseFirestore.instance),
+    Bind.lazySingleton((i) => FirebaseAuthService(i<FirebaseAuth>())),
+    Bind.lazySingleton((i) => FirebaseStorageService(i<FirebaseStorage>())),
+    Bind.lazySingleton((i) => FirebaseFirestoreService(i<FirebaseFirestore>())),
     Bind.lazySingleton<Dio>((i) => Dio()),
     Bind.lazySingleton<DioInterceptor>((i) => DioInterceptor()),
     Bind.lazySingleton<IHttpClientAdapter>(

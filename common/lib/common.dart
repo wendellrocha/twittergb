@@ -1,6 +1,7 @@
 export 'src/adapters/dio_adapter.dart';
 export 'src/adapters/http_client_adapter.dart';
 export 'src/constants/constants.dart';
+export 'src/errors/auth_error.dart';
 export 'src/guards/auth_guard.dart';
 export 'src/http/errors/http_error.dart';
 export 'src/http/interceptors/dio_interceptor.dart';
@@ -10,6 +11,9 @@ export 'src/models/menu_item_model.dart';
 export 'src/models/news_message_model.dart';
 export 'src/models/news_model.dart';
 export 'src/models/user_model.dart';
+export 'src/services/firebase_auth_service.dart';
+export 'src/services/firebase_firestore_service.dart';
+export 'src/services/firebase_storage_service.dart';
 export 'src/services/shared_preferences_service.dart';
 export 'src/stores/user_store.dart';
 export 'src/theme/theme_controller.dart';

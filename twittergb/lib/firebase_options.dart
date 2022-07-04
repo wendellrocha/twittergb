@@ -17,19 +17,13 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -52,11 +46,31 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCs_t09W78bir4VUaEBuVWuRQzA06eN-VI',
+    appId: '1:74581911787:web:a62ea3de66ba2f7cd976ae',
+    messagingSenderId: '74581911787',
+    projectId: 'twittergb-aca55',
+    authDomain: 'twittergb-aca55.firebaseapp.com',
+    storageBucket: 'twittergb-aca55.appspot.com',
+    measurementId: 'G-Q360TDG916',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD2__2GQ7k9VFijajlkTVPMqDNEMRgJJPk',
     appId: '1:74581911787:android:54658deaef5f6455d976ae',
     messagingSenderId: '74581911787',
     projectId: 'twittergb-aca55',
     storageBucket: 'twittergb-aca55.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyClzjTmKB125ybQJAfmmJ0D3BZpKJPSKfA',
+    appId: '1:74581911787:ios:0947bf02258035c1d976ae',
+    messagingSenderId: '74581911787',
+    projectId: 'twittergb-aca55',
+    storageBucket: 'twittergb-aca55.appspot.com',
+    iosClientId: '74581911787-e55a8ipkn8eireetjdl2hmuv8ariar33.apps.googleusercontent.com',
+    iosBundleId: 'com.wendellrocha.twittergb',
   );
 }

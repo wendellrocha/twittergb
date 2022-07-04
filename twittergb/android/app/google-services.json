@@ -29,6 +29,13 @@
             {
               "client_id": "74581911787-rrfhtl8mjpe0dctu00f8kjs8v5pack89.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "74581911787-e55a8ipkn8eireetjdl2hmuv8ariar33.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wendellrocha.twittergb"
+              }
             }
           ]
         }

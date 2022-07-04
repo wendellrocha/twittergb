@@ -1,32 +1,17 @@
 import 'package:collection/collection.dart';
-import 'package:dependencies/dependencies.dart';
 
-@HiveType(typeId: 0)
 class UserModel {
-  @HiveField(0, defaultValue: 0)
-  final int? userId;
-
-  @HiveField(2)
+  final String? userId;
   final String? name;
-
-  @HiveField(1)
   final String? profilePicture;
-
-  @HiveField(2)
-  final String? imagePath;
-
-  @HiveField(3, defaultValue: 'boticario@boticario.com')
   final String? email;
-
-  @HiveField(4)
   final String? password;
 
   const UserModel({
-    this.userId = 0,
+    this.userId,
     this.name,
     this.profilePicture,
-    this.imagePath,
-    this.email,
+    this.email = 'boticario@boticario.com',
     this.password,
   });
 
@@ -35,7 +20,7 @@ class UserModel {
       ' email: $email, profilePicture: $profilePicture)';
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        userId: json['userId'] as int?,
+        userId: json['userId'] as String?,
         name: json['name'] as String?,
         profilePicture: json['profile_picture'] as String?,
       );
@@ -48,11 +33,13 @@ class UserModel {
       };
 
   UserModel copyWith({
+    String? userId,
     String? name,
     String? profilePicture,
     String? email,
   }) {
     return UserModel(
+      userId: userId ?? this.userId,
       name: name ?? this.name,
       profilePicture: profilePicture ?? this.profilePicture,
       email: email ?? this.email,
@@ -68,5 +55,9 @@ class UserModel {
   }
 
   @override
-  int get hashCode => userId.hashCode ^ name.hashCode ^ profilePicture.hashCode;
+  int get hashCode =>
+      userId.hashCode ^
+      name.hashCode ^
+      email.hashCode ^
+      profilePicture.hashCode;
 }
