@@ -13,6 +13,20 @@ class StartPage extends StatefulWidget {
 
 class StartPageState extends State<StartPage> {
   final StartController controller = Modular.get();
+  @override
+  void initState() {
+    super.initState();
+    Modular.to.addListener(() {
+      int index = controller.menuItems
+          .map((e) => e.route)
+          .toList()
+          .indexWhere((element) => element == Modular.to.path);
+
+      if (!index.isNegative) {
+        controller.onTap(index);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

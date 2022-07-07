@@ -5,7 +5,12 @@ import 'splash_store.dart';
 
 class SplashPage extends StatefulWidget {
   final String title;
-  const SplashPage({Key? key, this.title = 'SplashPage'}) : super(key: key);
+  final String splashIcon;
+  const SplashPage({
+    Key? key,
+    this.title = 'SplashPage',
+    required this.splashIcon,
+  }) : super(key: key);
   @override
   SplashPageState createState() => SplashPageState();
 }
@@ -16,18 +21,16 @@ class SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Modular.to.navigate('/start/home/');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: FlutterLogo(
-          size: 150,
-        ),
+        child: Image.asset(widget.splashIcon, width: 50),
       ),
     );
   }

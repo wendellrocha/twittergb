@@ -6,7 +6,7 @@ class ThemeController extends ChangeNotifier {
   final SharedPreferences _prefs;
 
   ThemeController(this._prefs) {
-    _currentTheme = _prefs.getString(themePrefKey) ?? 'dark';
+    _currentTheme = _prefs.getString(themePrefKey) ?? 'light';
   }
 
   String? _currentTheme;

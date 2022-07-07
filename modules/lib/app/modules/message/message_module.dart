@@ -9,7 +9,7 @@ class MessageModule extends Module {
   @override
   final List<Bind> binds = [
     TripleBind.lazySingleton((i) => MessageStore()),
-    Bind.lazySingleton((i) => MessageController()),
+    Bind.lazySingleton((i) => MessageController(i(), i())),
   ];
 
   @override
@@ -22,6 +22,7 @@ class MessageModule extends Module {
           (element) => element.name == args.params['type'],
           orElse: () => MessageType.create,
         ),
+        post: args.data,
       ),
     ),
   ];

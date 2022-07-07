@@ -58,3 +58,26 @@ class LoginUserError extends Failure {
     );
   }
 }
+
+class ChangePasswordError extends Failure {
+  @override
+  final String message;
+  final String errorCode;
+
+  ChangePasswordError({required this.errorCode, required this.message});
+
+  factory ChangePasswordError.fromCode(String errorCode) {
+    if (_errorCodes.containsKey(errorCode)) {
+      return ChangePasswordError(
+        errorCode: errorCode,
+        message: _errorCodes[errorCode]!,
+      );
+    }
+
+    return ChangePasswordError(
+      errorCode: errorCode,
+      message: 'Não foi possível realizar o login no momento.'
+          ' Por favor, tente novamente.',
+    );
+  }
+}

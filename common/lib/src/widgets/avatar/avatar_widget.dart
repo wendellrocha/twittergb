@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constants/constants.dart';
+
 class AvatarWidget extends StatelessWidget {
   final String? imageUrl;
   const AvatarWidget({Key? key, this.imageUrl}) : super(key: key);
@@ -13,9 +15,7 @@ class AvatarWidget extends StatelessWidget {
         color: Theme.of(context).backgroundColor,
         borderRadius: BorderRadius.circular(5),
         image: DecorationImage(
-          image: NetworkImage(
-            imageUrl ?? 'https://i.pravatar.cc/300',
-          ),
+          image: NetworkImage(imageUrl ?? profilePictureUrl),
           fit: BoxFit.cover,
         ),
       ),

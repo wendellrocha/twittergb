@@ -1,46 +1,72 @@
+import 'package:dartz/dartz.dart';
 import 'package:dependencies/dependencies.dart';
 
-import '../errors/auth_error.dart';
-import '../models/user_model.dart';
+import '../../common.dart';
+import '../errors/failure.dart';
 
 class FirebaseAuthService {
   final FirebaseAuth _auth;
 
   FirebaseAuthService(this._auth);
 
-  void _listenChanges() {
+  void listenChanges(UserChangesCallback callback) {
     final stream = _auth.userChanges();
 
-    stream.listen((User? user) {
-      if (user != null) {
-        print(user);
-      }
-    });
+    stream.listen(callback);
   }
 
-  Future<UserModel> createAccount(UserModel user) async {
+  Future<Either<CreateUserError, UserModel>> createAccount(
+    UserModel user,
+  ) async {
     try {
       final firebaseUser = await _auth.createUserWithEmailAndPassword(
         email: user.email!,
         password: user.password!,
       );
-
-      return user.copyWith(userId: firebaseUser.user!.uid);
+      await updateUsername(user.name!);
+      return Right(user.copyWith(userId: firebaseUser.user!.uid));
     } on FirebaseAuthException catch (e) {
-      throw CreateUserError.fromCode(e.code);
+      return Left(CreateUserError.fromCode(e.code));
     }
   }
 
-  Future<UserModel> login(UserModel user) async {
+  Future<Either<Failure, bool>> checkIfUserExists(String email) async {
+    try {
+      final methods = await _auth.fetchSignInMethodsForEmail(email);
+      return Right(methods.isNotEmpty);
+    } on FirebaseAuthException catch (e) {
+      return Left(LoginUserError.fromCode(e.code));
+    }
+  }
+
+  Future<Either<LoginUserError, UserModel>> login(UserModel user) async {
     try {
       final firebaseUser = await _auth.signInWithEmailAndPassword(
         email: user.email!,
         password: user.password!,
       );
 
-      return user.copyWith(userId: firebaseUser.user!.uid);
+      return Right(user.copyWith(
+        userId: firebaseUser.user!.uid,
+        name: firebaseUser.user!.displayName!,
+        profilePicture: firebaseUser.user!.photoURL,
+        email: firebaseUser.user!.email,
+      ));
     } on FirebaseAuthException catch (e) {
-      throw LoginUserError.fromCode(e.code);
+      return Left(LoginUserError.fromCode(e.code));
+    }
+  }
+
+  Future<void> logout() async {
+    await _auth.signOut();
+  }
+
+  Future<Either<Failure, bool>> changePassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      return const Right(true);
+    } on FirebaseAuthException catch (e) {
+      return Left(ChangePasswordError.fromCode(e.code));
     }
   }
 

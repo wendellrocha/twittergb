@@ -1,10 +1,14 @@
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:dio/dio.dart';
+export 'package:extended_masked_text/extended_masked_text.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_storage/firebase_storage.dart';
 export 'package:flutter_modular/flutter_modular.dart';
 export 'package:flutter_triple/flutter_triple.dart';
+export 'package:font_awesome_flutter/font_awesome_flutter.dart';
+export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'package:google_fonts/google_fonts.dart';
+export 'package:image_picker/image_picker.dart';
 export 'package:modular_triple_bind/modular_triple_bind.dart';
 export 'package:shared_preferences/shared_preferences.dart';

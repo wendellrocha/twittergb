@@ -8,6 +8,8 @@ class DefaaultAAppBarWidget extends StatefulWidget
   final double? elevation;
   final PreferredSizeWidget? bottom;
   final VoidCallback? callbackButton;
+  final Color? backgroundColor;
+  final Color? titleColor;
   const DefaaultAAppBarWidget({
     Key? key,
     required this.title,
@@ -15,6 +17,8 @@ class DefaaultAAppBarWidget extends StatefulWidget
     this.elevation,
     this.bottom,
     this.callbackButton,
+    this.backgroundColor,
+    this.titleColor,
   }) : super(key: key);
 
   @override
@@ -28,15 +32,17 @@ class _DefaaultAAppBarWidgetState extends State<DefaaultAAppBarWidget> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: widget.backgroundColor ?? Theme.of(context).primaryColor,
       actions: widget.actions,
       elevation: widget.elevation,
       bottom: widget.bottom,
-      leading: Modular.to.canPop()
+      leading: Modular.to.canPop() || widget.callbackButton != null
           ? Material(
               color: Colors.transparent,
               child: InkWell(
-                onTap: () => Modular.to.pop(),
+                onTap: widget.callbackButton != null
+                    ? () => widget.callbackButton!.call()
+                    : () => Modular.to.pop(),
                 child: Container(
                   margin: const EdgeInsets.all(8),
                   width: 30,
@@ -61,7 +67,12 @@ class _DefaaultAAppBarWidgetState extends State<DefaaultAAppBarWidget> {
               ),
             )
           : null,
-      title: Text(widget.title),
+      title: Text(
+        widget.title,
+        style: TextStyle(
+          color: widget.titleColor,
+        ),
+      ),
     );
   }
 }
