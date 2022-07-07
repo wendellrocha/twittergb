@@ -22,3 +22,6 @@ groups:
   - path: assets/images
     class_name: Images
     types: [ .png, .jpg, .jpeg, .webp, .webm, .bmp ]
+  - path: assets/icons
+    class_name: Icon
+    types: [ .png, .jpg, .jpeg, .webp, .webm, .bmp ]

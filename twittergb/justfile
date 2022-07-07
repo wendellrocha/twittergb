@@ -40,10 +40,9 @@ run_unit:
 ## Roda o linter
 lint:
 	@echo "╠ Verifying code..."
-	@cd ../dependencies && fvm dart analyze . || (echo "▓▓ Lint error ▓▓"; exit 1)
-	@cd ../common && fvm dart analyze . || (echo "▓▓ Lint error ▓▓"; exit 1)
-	@cd ../modules && fvm dart analyze . || (echo "▓▓ Lint error ▓▓"; exit 1)
-	@cd ../twittergb && fvm dart analyze . || (echo "▓▓ Lint error ▓▓"; exit 1)
+	@cd ../dependencies && fvm dart analyze . 
+	@cd ../modules && fvm dart analyze . 
+	@cd ../twittergb && fvm dart analyze .
 
 ## Roda o app em debug
 run: lint format

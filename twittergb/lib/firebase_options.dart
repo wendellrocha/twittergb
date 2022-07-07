@@ -70,7 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '74581911787',
     projectId: 'twittergb-aca55',
     storageBucket: 'twittergb-aca55.appspot.com',
-    iosClientId: '74581911787-e55a8ipkn8eireetjdl2hmuv8ariar33.apps.googleusercontent.com',
+    iosClientId:
+        '74581911787-e55a8ipkn8eireetjdl2hmuv8ariar33.apps.googleusercontent.com',
     iosBundleId: 'com.wendellrocha.twittergb',
   );
 }

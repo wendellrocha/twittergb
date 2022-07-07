@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wendellrocha.twittergb">
    <application
-        android:label="twittergb"
+        android:label="TwitterGB"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
