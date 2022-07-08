@@ -15,6 +15,7 @@ just build_bundle ou make build_bundle # gerar appbundle
  - O entrypoint do projeto é o [twittergb](/twittergb).
  - No [dependencies](/dependencies) estão todas as dependências externas do app (pacotes do [pub](pub.dev))
  - No [common](/common) está tudo o que é comum no app. Por exemplo, cliente http, models, stores globais, services...
+ - No [modules](/modules) estão todos os módulos (features) do app
 
 ### Serviços utilizados
 No projeto foram utilizados alguns serviços do Firebase, que são:
@@ -26,7 +27,7 @@ As políticas de segurança do Storage e do Firestore estão permitindo a leitur
 
 A troca do nome do usuário é permitida, mas não irá refletir nos posts antigos, apenas nos novos. O motivo dessa escolha consiste no fato do Firestore não permitir aggregations, por isso deveriam ser feitas no dispositivo o que pode levar a gargalos e demoras para exibir e/ou editar posts.
 
-A ao criar uma mensagem (post), é enviado um snapshot do usuário logado. Caso o mesmo não tenha alterado a foto do perfil, o post ficará uma foto de perfil padrão e ela não é atualizada no usuário do post.
+Ao criar uma mensagem (post), é enviado um snapshot do usuário logado. Caso o mesmo não tenha alterado a foto do perfil, o post ficará uma foto de perfil padrão e ela não é atualizada no usuário do post.
 
 O aplicativo está configurado para rodar apenas no Android.
 
